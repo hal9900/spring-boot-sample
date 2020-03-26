@@ -29,9 +29,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-jdbc")
     implementation("org.seasar.doma.boot:doma-spring-boot-starter:1.2.1")
     runtimeOnly("com.h2database:h2")
-    testImplementation('org.springframework.boot:spring-boot-starter-test') {
-		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-	}
+    testImplementation("junit:junit")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
 
