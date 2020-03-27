@@ -9,16 +9,29 @@ group = 'com.example'
 version = '2.17.1-SNAPSHOT'
 sourceCompatibility = '11'
 
+ext.domaResources = ['doma.compile.config', 'META-INF/**/*.sql', 'META-INF/**/*.script']
 
- // JavaクラスとSQLファイルの出力先ディレクトリを同じにする
- processResources.destinationDir = compileJava.destinationDir
- // コンパイルより前にSQLファイルを出力先ディレクトリにコピーするために依存関係を逆転する
- compileJava.dependsOn processResources
+task copyDomaResources(type: Sync) {
+    from sourceSets.main.resources.srcDirs
+    into compileJava.destinationDir
+    include domaResources
+}
 
-// eclipseでdaoの自動生成するために絶対必要
-dependencies {
-    annotationProcessor "org.seasar.doma:doma:2.28.0"
-    implementation "org.seasar.doma:doma:2.28.0"
+compileJava {
+    // copy doma related resources before compileJava
+    dependsOn copyDomaResources
+    options.encoding = 'UTF-8'
+}
+
+processResources {
+    // exclude doma related resources
+    exclude domaResources
+}
+
+compileTestJava {
+    options.encoding = 'UTF-8'
+    // disable the annotation processors during the test run
+    options.compilerArgs = ['-proc:none']
 }
 
 repositories {
@@ -34,11 +47,13 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-jdbc")
     implementation("org.seasar.doma.boot:doma-spring-boot-starter:1.2.1")
+    //domaの注釈処理を実行することを示す 必須
+    annotationProcessor "org.seasar.doma:doma:2.28.0"
+    // domaへの依存を示す
+    implementation "org.seasar.doma:doma:2.28.0"
     runtimeOnly("com.h2database:h2")
     testImplementation("junit:junit")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
-
-
 
 apply from:'eclipse.gradle'
