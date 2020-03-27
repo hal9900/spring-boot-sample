@@ -67,6 +67,7 @@ Generate all Eclipse files with Gradle.
 2. Refresh Gradle Project
 3. ./gradlew eclipse
 4. right click on project > Refresh
+5. right click on project > Run As > Spring Boot Apps
 
 License
 -------
