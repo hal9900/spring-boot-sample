@@ -19,4 +19,7 @@ public interface CityDao {
 
     @Update
     int update(City city);
+    
+    @Select
+    City selectByName(String name);
 }

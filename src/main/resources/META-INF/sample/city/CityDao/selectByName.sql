@@ -1,0 +1,1 @@
+select /*%expand*/* from city where name = /* name */'Kyoto'
