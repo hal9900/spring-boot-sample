@@ -61,6 +61,13 @@ Generate all Eclipse files with Gradle.
 ./gradlew eclipse
 ```
 
+## Step
+
+1. right clike on build.gradle
+2. Refresh Gradle Project
+3. ./gradlew eclipse
+4. right click on project > Refresh
+
 License
 -------
 
