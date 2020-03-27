@@ -61,7 +61,7 @@ Generate all Eclipse files with Gradle.
 ./gradlew eclipse
 ```
 
-## Step
+### Step
 
 1. right clike on build.gradle
 2. Refresh Gradle Project
