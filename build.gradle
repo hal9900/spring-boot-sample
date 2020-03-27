@@ -2,11 +2,11 @@ plugins {
 	id 'org.springframework.boot' version '2.2.5.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 	id 'java'
-//	id 'idea'
+	id 'idea'
 }
 
-group = 'com.example'
-version = '2.17.1-SNAPSHOT'
+//group = 'sample'
+//version = '2.17.1-SNAPSHOT'
 sourceCompatibility = '11'
 
 ext.domaResources = ['doma.compile.config', 'META-INF/**/*.sql', 'META-INF/**/*.script']
@@ -43,17 +43,17 @@ repositories {
 }
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-devtools")
-    implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("org.springframework.boot:spring-boot-starter-jdbc")
-    implementation("org.seasar.doma.boot:doma-spring-boot-starter:1.2.1")
+    implementation 'org.springframework.boot:spring-boot-devtools'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'org.seasar.doma.boot:doma-spring-boot-starter:1.2.1'
     //domaの注釈処理を実行することを示す 必須
     annotationProcessor "org.seasar.doma:doma:2.28.0"
     // domaへの依存を示す
     implementation "org.seasar.doma:doma:2.28.0"
-    runtimeOnly("com.h2database:h2")
-    testImplementation("junit:junit")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    runtimeOnly 'com.h2database:h2'
+    testImplementation 'junit:junit'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 apply from:'eclipse.gradle'
