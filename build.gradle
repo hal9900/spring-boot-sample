@@ -12,8 +12,8 @@ ext.dependentVersion = '2.28.0'
 ext.domaResources = ['doma.compile.config', 'META-INF/**/*.sql', 'META-INF/**/*.script']
 
 task copyDomaResources(type: Sync) {
-    from sourceSets.main.resources.srcDirs
-    into compileJava.destinationDir
+    from sourceSets.main.resources.srcDirs //src/main/resouces/*
+    into compileJava.destinationDir // build/classes/java/main/
     include domaResources
 }
 
